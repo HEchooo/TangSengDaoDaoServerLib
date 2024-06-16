@@ -28,6 +28,7 @@ type Context struct {
 	log.Log
 	EventPool      pool.Collector
 	PushPool       pool.Collector // 离线push
+	EchoooPushPool pool.Collector // Echooo离线push
 	RobotEventPool pool.Collector // 机器人事件pool
 	Event          wkevent.Event
 	elasticClient  *elastic.Client

@@ -219,6 +219,11 @@ type Config struct {
 		OPPO            OPPOPush     // oppo推送
 		FIREBASE        FIREBASEPush // FIREBASE推送
 	}
+
+	EchoooPush struct {
+		ServerAddresses string // Echooo Push
+	}
+
 	// ---------- message ----------
 	Message struct {
 		SendMessageOn                 bool // 是否开启接口发送发送消息
@@ -449,6 +454,12 @@ func New() *Config {
 				Topic:    "com.xinbida.tangsengdaodao",
 				Password: "123456",
 			},
+		},
+
+		EchoooPush: struct {
+			ServerAddresses string
+		}{
+			ServerAddresses: "",
 		},
 
 		// ---------- support  ----------
@@ -687,6 +698,8 @@ func (c *Config) ConfigureWithViper(vp *viper.Viper) {
 	c.Push.FIREBASE.JsonPath = c.getString("push.firebase.jsonPath", c.Push.FIREBASE.JsonPath)
 	c.Push.FIREBASE.ProjectId = c.getString("push.firebase.projectId", c.Push.FIREBASE.ProjectId)
 	c.Push.FIREBASE.PackageName = c.getString("push.firebase.packageName", c.Push.FIREBASE.PackageName)
+	c.EchoooPush.ServerAddresses = c.getString("echooo.push.serverAddresses", c.EchoooPush.ServerAddresses)
+
 	//#################### message ####################
 	c.Message.SendMessageOn = c.getBool("message.sendMessageOn", c.Message.SendMessageOn)
 	c.Message.SyncReadedCountIntervalSecond = c.getInt("message.syncReadedCountIntervalSecond", c.Message.SyncReadedCountIntervalSecond)
@@ -1013,6 +1026,10 @@ type FIREBASEPush struct {
 	PackageName string
 	JsonPath    string // firebase推送需要的json的路径
 	ProjectId   string // serviceAccountJson中的project_id值
+}
+
+type EchoooPush struct {
+	serverAddresses string //多个地址用逗号分割
 }
 
 type duration struct {

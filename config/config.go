@@ -72,6 +72,7 @@ type Config struct {
 	SSLAddr                     string // ssl 监听地址
 	MessageSaveAcrossDevice     bool   // 消息是否跨设备保存（换设备登录消息是否还能同步到老消息）
 	WelcomeMessage              string // 登录注册欢迎语
+	WelcomeMessageEn            string // 登录注册欢迎语
 	PhoneSearchOff              bool   // 是否关闭手机号搜索
 	OnlineStatusOn              bool   // 是否开启在线状态显示
 	GroupUpgradeWhenMemberCount int    // 当成员数量大于此配置时 自动升级为超级群 默认为 1000
